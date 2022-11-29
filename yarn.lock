@@ -883,6 +883,11 @@ update-browserslist-db@^1.0.9:
     escalade "^3.1.1"
     picocolors "^1.0.0"
 
+uuid@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
+  integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
+
 vite-plugin-windicss@^1.8.8:
   version "1.8.8"
   resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-1.8.8.tgz#ff1adf7d1a1c38634c77a4c0125fa730d16138e7"
