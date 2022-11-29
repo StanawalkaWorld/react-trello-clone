@@ -1,13 +1,15 @@
-import { useState } from "react";
-
 import MainHeader from "./components/layout/MainHeader";
+import MainContent from "./components/layout/MainContent";
+import { useEntries } from "./hooks/entries";
 
 function App() {
+    const [entries, dispatchEntries] = useEntries();
+
     return (
         <>
             <MainHeader />
             {/* <nav></nav> */}
-            <main></main>
+            <MainContent entries={entries} />
             <footer></footer>
         </>
     );
