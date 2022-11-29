@@ -1,10 +1,12 @@
 import { useState } from "react";
 
+import MainHeader from "./components/layout/MainHeader";
+
 function App() {
     return (
         <>
-            <header></header>
-            <nav></nav>
+            <MainHeader />
+            {/* <nav></nav> */}
             <main></main>
             <footer></footer>
         </>
