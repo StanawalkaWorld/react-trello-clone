@@ -8,7 +8,7 @@ export interface Entry {
     id: string;
     title: string;
     description: string;
-    created_at: Date;
-    modified_at: Date;
+    created_at: number;
+    modified_at: number;
     tag: string;
 }
