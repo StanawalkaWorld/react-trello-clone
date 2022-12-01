@@ -13,24 +13,12 @@ function getAllTags(entries: Entry[]): string[] {
 }
 
 function MainContent() {
-    const entries = useStoreSelector((state) => state.entries);
+    const entries = useStoreSelector((state) => state.entries.entryList);
     const entryDispatch = useStoreDispatch();
 
     const tags: string[] = useMemo(() => getAllTags(entries), [entries]);
-
-    const test_entry = () => {
-        entryDispatch(
-            entryAdded({
-                title: "Test entry",
-                description: "nice",
-                tag: "🔥🔥🔥",
-            })
-        );
-    };
-
     return (
-        <main className="flex flex-wrap gap-4 py-6 overflow-x-auto">
-            <button onClick={test_entry}>kekw</button>
+        <main className="flex flex-wrap gap-4 p-4 overflow-x-auto">
             {tags.map((tag) => (
                 <CardHolder
                     key={tag}
