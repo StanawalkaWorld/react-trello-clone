@@ -13,22 +13,23 @@ function getAllCategories(entries: Entry[]): string[] {
 
 function MainContent() {
     const entries = useStoreSelector((state) => state.entries.entryList);
-    const entryDispatch = useStoreDispatch();
 
     const categories: string[] = useMemo(
         () => getAllCategories(entries),
         [entries]
     );
     return (
-        <main className="flex flex-wrap gap-4 p-4 overflow-x-auto">
+        <main className="flex p-4 overflow-x-auto gap-4">
             {categories.map((category) => (
-                <CardHolder
-                    key={category}
-                    category={category}
-                    entries={entries.filter(
-                        (entry) => entry.category === category
-                    )}
-                />
+                <div>
+                    <CardHolder
+                        key={category}
+                        category={category}
+                        entries={entries.filter(
+                            (entry) => entry.category === category
+                        )}
+                    />
+                </div>
             ))}
         </main>
     );

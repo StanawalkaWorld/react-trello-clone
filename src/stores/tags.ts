@@ -7,7 +7,13 @@ interface TagsState {
 }
 
 const initialState: TagsState = {
-    tagList: [],
+    tagList: [
+        {
+            id: "1",
+            name: "Test tag",
+            color: "#C05",
+        },
+    ],
 };
 
 const tagsSlice = createSlice({
