@@ -1,5 +1,5 @@
 import { useStoreDispatch } from "../../hooks/storeHook";
-import { entryAdded, entryClear } from "../../stores/entry";
+import { addEntry, entryClear } from "../../stores/entry";
 import { BehaviorColor } from "../../types/colors";
 import MButton from "../ui/MButton";
 
@@ -8,10 +8,10 @@ function ToolBar() {
 
     const test_entry = () => {
         dispatch(
-            entryAdded({
+            addEntry({
                 title: "Test entry",
                 description: "nice",
-                tag: "🔥🔥🔥",
+                category: "🔥🔥🔥",
             })
         );
     };
