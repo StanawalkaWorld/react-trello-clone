@@ -1,0 +1,8 @@
+@layer components {
+    .circle-btn-big {
+        @apply w-12 h-12 text-lg;
+    }
+    .circle-btn {
+        @apply w-8 h-8;
+    }
+}
