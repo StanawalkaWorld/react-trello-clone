@@ -1,7 +1,18 @@
+export interface DraftTag {
+    name: string;
+    color: string;
+}
+
+export interface Tag {
+    id: string;
+    name: string;
+    color: string;
+}
+
 export interface DraftEntry {
     title: string;
     description: string;
-    tag: string;
+    tags: string[];
 }
 
 export interface Entry {
@@ -10,5 +21,5 @@ export interface Entry {
     description: string;
     created_at: number;
     modified_at: number;
-    tag: string;
+    tags: string[];
 }
