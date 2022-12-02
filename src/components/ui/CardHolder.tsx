@@ -1,22 +1,22 @@
 import { useStoreDispatch } from "../../hooks/storeHook";
-import { tagRemove } from "../../stores/entry";
+import { categoryRemove } from "../../stores/entry";
 import { BehaviorColor } from "../../types/colors";
 import { Entry } from "../../types/entry";
 import CircleButton from "./CircleButton";
 import EntryCard from "./EntryCard";
 import MButton from "./MButton";
 
-function CardHolder(props: { tag: string; entries: Entry[] }) {
+function CardHolder(props: { category: string; entries: Entry[] }) {
     const dispatch = useStoreDispatch();
 
     return (
         <div className="p-2 rounded-md dark:bg-blue-gray-800 flex flex-col gap-2">
             <div>
-                <h3 className="text-2xl float-left">{props.tag}</h3>
+                <h3 className="text-2xl float-left">{props.category}</h3>
                 <div className="float-right">
                     <CircleButton
                         variant={BehaviorColor.ERROR}
-                        onClick={() => dispatch(tagRemove(props.tag))}
+                        onClick={() => dispatch(categoryRemove(props.category))}
                         big
                     >
                         <span>

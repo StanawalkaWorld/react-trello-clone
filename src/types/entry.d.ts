@@ -12,7 +12,8 @@ export interface Tag {
 export interface DraftEntry {
     title: string;
     description: string;
-    tags: string[];
+    category: string;
+    tags?: string[];
 }
 
 export interface Entry {
@@ -21,5 +22,6 @@ export interface Entry {
     description: string;
     created_at: number;
     modified_at: number;
-    tags: string[];
+    category: string;
+    tags?: string[];
 }

@@ -14,7 +14,7 @@ const todosSlice = createSlice({
     name: "entries",
     initialState,
     reducers: {
-        entryAdded(state, action: PayloadAction<DraftEntry>) {
+        addEntry(state, action: PayloadAction<DraftEntry>) {
             state.entryList.push({
                 ...action.payload,
                 id: uuid(),
@@ -27,9 +27,9 @@ const todosSlice = createSlice({
                 (entry) => entry.id != action.payload
             );
         },
-        tagRemove(state, action: PayloadAction<string>) {
+        categoryRemove(state, action: PayloadAction<string>) {
             state.entryList = state.entryList.filter(
-                (entry) => entry.tag != action.payload
+                (entry) => entry.category !== action.payload
             );
         },
         entryClear(state) {
@@ -52,6 +52,11 @@ const todosSlice = createSlice({
     },
 });
 
-export const { entryAdded, entryRemove, entryModify, tagRemove, entryClear } =
-    todosSlice.actions;
+export const {
+    addEntry,
+    entryRemove,
+    entryModify,
+    categoryRemove,
+    entryClear,
+} = todosSlice.actions;
 export default todosSlice.reducer;
