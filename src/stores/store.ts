@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import entriesReducer from "./entry";
+import tagReducer from "./tags";
 
 const store = configureStore({
     reducer: {
         entries: entriesReducer,
+        tags: tagReducer,
     },
 });
 
