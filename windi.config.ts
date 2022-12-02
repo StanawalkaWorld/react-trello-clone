@@ -25,5 +25,10 @@ export default defineConfig({
         "hover:bg-error",
         "hover:bg-info",
         "hover:bg-secondary",
+
+        "bg-success",
+        "bg-error",
+        "bg-info",
+        "bg-secondary",
     ],
 });
