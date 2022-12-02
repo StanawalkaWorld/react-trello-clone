@@ -6,14 +6,11 @@ function MButton(props: {
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     variant?: BehaviorColor;
 }) {
-    let variant = props.variant;
-    if (!variant) {
-        variant = BehaviorColor.INFO;
-    }
+    let variant = props.variant ?? BehaviorColor.INFO;
 
     return (
         <button
-            className={`py-2 px-4 rounded-md border-4 dark:text-white border-${variant} hover:bg-${variant}`}
+            className={`py-2 px-4 rounded-md border-4 border-${variant} hover:bg-${variant}`}
             onClick={props.onClick}
         >
             {props.children}
