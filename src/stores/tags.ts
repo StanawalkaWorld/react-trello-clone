@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuid } from "uuid";
 import { DraftTag, Tag } from "../types/entry";
 
-interface TagsState {
+export interface TagsState {
     tagList: Tag[];
 }
 
@@ -32,6 +32,4 @@ const tagsSlice = createSlice({
 });
 
 export const { addTag, removeTag } = tagsSlice.actions;
-export const tagsFromIds = (tags: string[]) => (state: { tags: TagsState }) =>
-    state.tags.tagList.filter((tag) => tags.includes(tag.id));
 export default tagsSlice.reducer;

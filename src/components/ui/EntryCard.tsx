@@ -3,11 +3,11 @@ import { entryRemove } from "../../stores/entry";
 import { Entry } from "../../types/entry";
 import { BehaviorColor } from "../../types/colors";
 import CircleButton from "./CircleButton";
-import { tagsFromIds } from "../../stores/tags";
+import { useTagsFromIDs } from "../../hooks/tagList";
 
 function EntryCard(props: { entry: Entry }) {
     const dispatch = useStoreDispatch();
-    const tags = useStoreSelector(tagsFromIds(props.entry.tags ?? []));
+    const tags = useTagsFromIDs(props.entry.tags);
 
     const remove = () => dispatch(entryRemove(props.entry.id));
 
