@@ -3,11 +3,14 @@ import { useCategories } from "../../hooks/categories";
 import { useStoreDispatch, useStoreSelector } from "../../hooks/storeHook";
 import { addEntry, entryClear } from "../../stores/entry";
 import { BehaviorColor } from "../../types/colors";
+import { value_or } from "../../types/monad";
 import MButton from "../ui/MButton";
+import MultiSelect from "../ui/MultiSelect";
 
 function ToolBar() {
     const dispatch = useStoreDispatch();
     const entries = useStoreSelector((state) => state.entries.entryList);
+    const tags = useStoreSelector((state) => state.tags.tagList);
     const categories = useCategories(entries);
 
     const createDialog = useRef<HTMLDialogElement>(null);
@@ -20,9 +23,12 @@ function ToolBar() {
     const createEntry = () => {
         dispatch(
             addEntry({
-                title: titleRef.current?.value,
-                description: descriptionRef.current?.value,
-                category: categoryRef.current?.value,
+                title: value_or(titleRef.current?.value, "New Card"),
+                description: value_or(
+                    descriptionRef.current?.value,
+                    "No description provided"
+                ),
+                category: value_or(categoryRef.current?.value, "New Category"),
             })
         );
     };
@@ -77,16 +83,23 @@ function ToolBar() {
                         ))}
                     </datalist>
                     {/* Some kind of tags multi-select and creation */}
+                    <MultiSelect
+                        datalist={tags.map((tag) => ({
+                            label: tag.name,
+                            value: tag.id,
+                            color: tag.color,
+                        }))}
+                    />
 
-                    <div className="flex justify-center">
+                    <div className="flex justify-center gap-8">
+                        <MButton variant={BehaviorColor.SUCCESS}>
+                            <>Create!</>
+                        </MButton>
                         <MButton
                             variant={BehaviorColor.ERROR}
                             onClick={() => createDialog.current?.close()}
                         >
                             <>Cancel</>
-                        </MButton>
-                        <MButton variant={BehaviorColor.SUCCESS}>
-                            <>Create!</>
                         </MButton>
                     </div>
                 </form>
