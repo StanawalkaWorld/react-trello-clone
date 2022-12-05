@@ -1,30 +1,31 @@
 import { useRef } from "react";
-import { useStoreDispatch } from "../../hooks/storeHook";
+import { useCategories } from "../../hooks/categories";
+import { useStoreDispatch, useStoreSelector } from "../../hooks/storeHook";
 import { addEntry, entryClear } from "../../stores/entry";
 import { BehaviorColor } from "../../types/colors";
 import MButton from "../ui/MButton";
 
 function ToolBar() {
     const dispatch = useStoreDispatch();
+    const entries = useStoreSelector((state) => state.entries.entryList);
+    const categories = useCategories(entries);
 
     const createDialog = useRef<HTMLDialogElement>(null);
 
     // New Card form refs
     const titleRef = useRef<HTMLInputElement>(null);
     const descriptionRef = useRef<HTMLTextAreaElement>(null);
+    const categoryRef = useRef<HTMLInputElement>(null);
 
-    const test_entry = () => {
+    const createEntry = () => {
         dispatch(
             addEntry({
-                title: "Test entry",
-                description: "nice",
-                category: "👨‍💻😉",
-                tags: ["1"],
+                title: titleRef.current?.value,
+                description: descriptionRef.current?.value,
+                category: categoryRef.current?.value,
             })
         );
     };
-
-    const createEntry = () => {};
 
     return (
         <>
@@ -63,9 +64,27 @@ function ToolBar() {
                     {/* Description textarea */}
                     <textarea className="input" ref={descriptionRef}></textarea>
                     {/* Category datalist (https://www.tutorialrepublic.com/html-reference/html5-datalist-tag.php) */}
+                    <input
+                        className="input"
+                        list="category-list"
+                        ref={categoryRef}
+                    />
+                    <datalist id="category-list">
+                        {categories.map((category) => (
+                            <option value={category} key={category}>
+                                {category}
+                            </option>
+                        ))}
+                    </datalist>
                     {/* Some kind of tags multi-select and creation */}
 
                     <div className="flex justify-center">
+                        <MButton
+                            variant={BehaviorColor.ERROR}
+                            onClick={() => createDialog.current?.close()}
+                        >
+                            <>Cancel</>
+                        </MButton>
                         <MButton variant={BehaviorColor.SUCCESS}>
                             <>Create!</>
                         </MButton>
