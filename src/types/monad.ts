@@ -22,3 +22,11 @@ export const maybe_or = <T, RT>(
 
     return callback(optional as T);
 };
+
+export const value_or = <T>(optional: Maybe<T>, or_val: T) => {
+    if (optional === null || optional === undefined) {
+        return or_val;
+    }
+
+    return optional as T;
+};
